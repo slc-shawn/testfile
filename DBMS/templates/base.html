@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block css %} 
+    {% endblock css %}
+    <title>
+       {% block title %} 
+       COLLEGE MANAGEMENT SYSTEM
+       {% endblock title %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body>
+
+  
+  
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">C.M.S</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">HOME</a>
+          </li>
+
+      
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/Student">Student</a>
+          </li>
+
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/Attendence">Attendence</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/Department">Department</a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/TRIG">TRIG</a>
+          </li>
+
+{% if current_user.is_authenticated  %}
+               
+<li class="nav-item">   
+  <a class="nav-link active" aria-current="page" href="/"> Welcome {{current_user.username}}</a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+                </li> 
+                    
+                        
+                    
+                </li>
+{% else %}
+
+<a class="nav-link active" aria-current="page" href="/Signup">Signup</a>
+<a class="nav-link active" aria-current="page" href="/login">Login</a>
+
+
+
+{% endif %}
+
+            </ul>
+            <form class="d-flex" action="/search" method="POST">
+
+                <input class="form-control mr-sm-2" type="search"  name="search" aria-label="Search">
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <script src="static/assets/js/main.js"></script>
+    {% block body %}
+    {% endblock body %}
+
+  
+
+
+
+
+  
+
+
+</body>
+
+</html>
